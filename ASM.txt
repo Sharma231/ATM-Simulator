@@ -1,0 +1,82 @@
+package Atm;
+import java.util.Scanner;
+class Atm{
+	int pin = 3456;
+	int Balance,amount;
+	Scanner sc = new Scanner(System.in);
+	
+	public void Checkpin(){
+	
+		System.out.println("Enter your pin : ");
+		
+		int enterpin = sc.nextInt();
+		if(enterpin==pin) {
+			menu();
+		}
+		else {
+			System.out.println("Invalid Pin");
+		}
+		menu();
+	}
+		
+		public void menu() {
+			System.out.println("Enter your Choice ");
+			System.out.println("1. Check A/C Balance ");
+			System.out.println("2. Withdraw Money ");
+			System.out.println("3. Deposit Money ");
+			System.out.println("4. EXIT ");
+			
+			int opt = sc.nextInt();
+			
+			if(opt == 1)
+				checkbalance();
+			else if(opt ==2)
+				withdraw();
+			else if(opt == 3)
+				deposit();
+			else if (opt== 4)
+				return;
+			else
+				System.out.println("Enter a choice: ");
+			    
+		}
+		
+		
+		public void checkbalance() {
+			System.out.println("Balance :"+ Balance);
+			menu();
+			
+		}
+		
+		public void withdraw() {
+			System.out.println("Enter the amount to be withdraw");
+			int amount = sc.nextInt();
+			if(amount>Balance)
+				System.out.println("Insufficient Fund");
+			else {
+				Balance = Balance - amount;
+				System.out.println("Money withdrawn Successfully");
+			}
+			menu();
+			
+	}
+		public void deposit() {
+			System.out.println("Enter the amount :");
+			amount = sc.nextInt();
+			Balance = Balance + amount;
+			System.out.println("Amount deposited Succesfully");
+			menu();
+			
+		}
+}
+
+public class AtmSimulation {
+
+	public static void main(String[] args) {
+		
+		Atm obj = new Atm();
+		obj.Checkpin();
+
+	}
+
+}
